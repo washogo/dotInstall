@@ -4,25 +4,58 @@
   <meta charset="utf-8">
   <title>JavaScript Practice</title>
   <style>
+    body{
+      display:flex;
+      flex-wrap:wrap;
+    }
     .box{
       width: 100px;
       height: 100px;
       background-color: skyblue;
       cursor: pointer;
+      transition:0.8s;
+      margin:0 8px 8px 0;
+      text-align:center;
+      line-height:100px;
+    }
+    .win{
+      background: pink;
+      border-radius:50%;
+      transform:rotate(360deg);
+    }
+    .lose{
+      transform:scale(0.9);
     }
   </style>
 </head>
 <body>
-  <div class="box" id="target"></div>
+  
 
   <script>
-    'use strict';  
+    'use strict';
     // ブラウザが厳密なチェックをしてくれる
-  
-  document.getElementById('target').addEventListener('click',() => { 
-    document.getElementById('target').style.background = 'pink';
-    document.getElementById('target').style.borderRadius = '50%';
-  });
+
+    const num = 5;
+    const winner = Math.floor(Math.random() * num); //0 - 4
+
+    for(let i = 0; i < num; i++){
+      const div = document.createElement('div');
+      div.classList.add('box');
+     
+
+      div.addEventListener('click',() => {
+        if (i === winner){
+          div.textContent = 'Win!'
+          div.classList.add('win')
+        }else{
+          div.textContent = 'Lose!'
+          div.classList.add('lose')
+        }
+      });
+
+      document.body.appendChild(div);
+    }
+    
   </script>
 </body>
 </html>
@@ -31,3 +64,10 @@
 <!-- getElementById()は指定したidを持つ要素を文章全体から取得する命令  -->
 <!-- EventListenerは何かが起きたら何らかの処理をするという仕組み -->
 <!-- chromeのデベロッパーツールでエラーを見つけて解決していく -->
+<!-- classList(引数)でクラスを追加することができる -->
+<!-- addを使用すると引数のクラスを付けることができる -->
+<!-- toggleを使用すると引数のクラスを付け外しするようになる -->
+<!-- 何度も使う命令は定数で管理しておくと変更に強くなる -->
+<!-- document.createElement(引数)の引数に要素名を渡せば要素を作ることができる -->
+<!-- document.body.appendChild();とするとbodyの子要素として追加することができる -->
+<!-- textContentは要素の中にテキストを追加することができる -->
