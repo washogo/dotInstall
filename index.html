@@ -13,6 +13,21 @@
   </style>
 </head>
 <body>
-  <div class="box"></div>
+  <div class="box" id="target"></div>
+
+  <script>
+    'use strict';  
+    // ブラウザが厳密なチェックをしてくれる
+  
+  document.getElementById('target').addEventListener('click',() => { 
+    document.getElementById('target').style.background = 'pink';
+    document.getElementById('target').style.borderRadius = '50%';
+  });
+  </script>
 </body>
 </html>
+
+<!-- documentは文章全体 -->
+<!-- getElementById()は指定したidを持つ要素を文章全体から取得する命令  -->
+<!-- EventListenerは何かが起きたら何らかの処理をするという仕組み -->
+<!-- chromeのデベロッパーツールでエラーを見つけて解決していく -->
